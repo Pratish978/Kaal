@@ -5,7 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { ChevronLeft, X, Menu, LogOut, Clock } from "lucide-react";
 import { supabase } from "@/app/utils/supabase"; 
 import AuthModal from "./auth/AuthModal";
-import { ChatInterface } from "./chat-interface";
+
 
 
 interface NavbarProps {
@@ -167,7 +167,7 @@ const Navbar = ({ onBack, forceBack }: NavbarProps) => {
 
       {showChat && (
         <div className="fixed inset-0 bg-[#FBF9F6] z-[100] animate-in fade-in slide-in-from-bottom-4 duration-500 pt-20">
-           <ChatInterface />
+           <ChatInterface/>
         </div>
       )}
 

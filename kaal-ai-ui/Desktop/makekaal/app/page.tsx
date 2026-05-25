@@ -7,7 +7,7 @@ import { Card, CardContent } from "@/components/ui1/card";
 import SupportSection from "../components/ui/SupportSection";
 
 import Navbar from "@/components/navbar";
-import { ChatInterface } from "@/components/chat-interface";
+
 
 export default function Home() {
   const [showChat, setShowChat] = useState(false);
@@ -61,7 +61,7 @@ export default function Home() {
         </>
       ) : (
         <div className="grow flex flex-col">
-          <ChatInterface  />
+          <chat-interface/>
         </div>
       )}
     </main>
