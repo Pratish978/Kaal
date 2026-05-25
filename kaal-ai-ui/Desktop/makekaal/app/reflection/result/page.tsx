@@ -1,8 +1,9 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import { Navbar } from "@/components/navbar"
+
 import { ReflectionResult } from "@/components/reflection-result"
+import Navbar from "@/components/navbar"
 
 export default function ReflectionResultPage() {
   const [stressLevel, setStressLevel] = useState<"Low" | "Moderate" | "High">("Moderate")
@@ -19,7 +20,7 @@ export default function ReflectionResultPage() {
 
   return (
     <main className="min-h-screen flex flex-col bg-background relative">
-      <Navbar showBackButton />
+      <Navbar />
       
       <div className="flex-1 flex items-center justify-center py-12">
         <ReflectionResult stressLevel={stressLevel} score={score} />

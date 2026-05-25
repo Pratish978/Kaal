@@ -1,10 +1,11 @@
 "use client";
 
 import React, { useState, useEffect, useMemo } from 'react';
-import Navbar from '../components/ui/Navbar';
-import BreathingCircle from '../components/Meditation1/BreathingCircle';
-import MeditationCard from '../components/Meditation1/MeditationCard';
+
 import { supabase } from '@/app/utils/supabase';
+import Navbar from '@/components/navbar';
+import BreathingCircle from "@/components/Meditation1/BreathingCircle";
+import MeditationCard from "@/components/Meditation1/MeditationCard";
 
 export default function MeditationPage() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
@@ -77,7 +78,7 @@ export default function MeditationPage() {
 
         {/* Breathing Circle */}
         <section className="w-full flex flex-col items-center justify-center py-10">
-          <BreathingCircle />
+          <BreathingCircle/>
         </section>
 
         {/* Heading */}

@@ -1,10 +1,11 @@
 "use client"
 
 import { useState } from "react"
-import { Navbar } from "@/components/navbar"
+
 import { EventCard } from "@/components/event-card"
 import { useEvents } from "@/hooks/useEvents"
 import { cn } from "@/lib/utils"
+import Navbar from "@/components/navbar"
 
 const filters = ["All"]
 
@@ -22,7 +23,7 @@ activeFilter === "All"
 return ( <main className="min-h-screen flex flex-col bg-background">
 
 
-  <Navbar showBackButton />
+  <Navbar  />
 
   <div className="flex-1 px-4 py-8">
 
