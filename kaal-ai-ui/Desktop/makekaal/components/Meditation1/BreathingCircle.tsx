@@ -3,8 +3,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import Navbar from "@/components/navbar";
-import ChatInterface from "@/app/chat/page";
 
 // JSON Imports
 import chapter2 from '@/app/JSON/Chapter2.json';
@@ -12,7 +10,8 @@ import chapter8 from '@/app/JSON/Chapter8.json';
 import chapter12 from '@/app/JSON/Chaptor12.json'; 
 import chapter15 from '@/app/JSON/Chaptor15.json'; 
 import chapter17 from '@/app/JSON/Chaptor17.json';
-
+import ChatInterface from '../chat/ChatInterface';
+import Navbar from '../navbar';
 
 const allGitaData = [...chapter2, ...chapter8, ...chapter12, ...chapter15, ...chapter17];
 

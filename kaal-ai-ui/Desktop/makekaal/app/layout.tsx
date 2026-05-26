@@ -20,7 +20,6 @@ export const metadata: Metadata = {
   title: "KAAL AI - Mental Wellness Companion",
   description:
     "Your safe space for emotional support, guided meditation, and mental wellness. Connect with AI-powered conversations, meditation exercises, and professional therapists.",
-
   icons: {
     icon: "/icon.png",
     shortcut: "/icon.png",
@@ -44,7 +43,11 @@ export default function RootLayout({
       lang="en"
       className={`${sourceSerif.variable} ${inter.variable}`}
     >
-      <body className="font-sans antialiased bg-background text-foreground min-h-screen">
+      {/* added suppressHydrationWarning to ignore attributes injected by browser extensions */}
+      <body 
+        className="font-sans antialiased bg-background text-foreground min-h-screen"
+        suppressHydrationWarning
+      >
         <AuthProvider>{children}</AuthProvider>
         <Analytics />
       </body>

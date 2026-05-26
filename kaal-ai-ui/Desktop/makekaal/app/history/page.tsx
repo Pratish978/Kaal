@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import Navbar from "../components/ui/Navbar";
+
 import { supabase } from "@/app/utils/supabase";
 import { BookOpen, Calendar, ChevronRight, AlertCircle } from "lucide-react";
 
