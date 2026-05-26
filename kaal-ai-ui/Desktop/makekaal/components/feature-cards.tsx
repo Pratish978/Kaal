@@ -55,7 +55,7 @@ export default function SupportSection() {
       title: "Meditation",
       icon: "/Home1.png",
       description: "Take a few gentle minutes to settle your thoughts and body.",
-      href: "Meditation2"
+      href: "Meditation"
     },
     {
       title: "Talk to a Psychologist",

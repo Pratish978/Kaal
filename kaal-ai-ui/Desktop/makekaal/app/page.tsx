@@ -7,6 +7,7 @@ import { Card, CardContent } from "@/components/ui1/card";
 import SupportSection from "../components/ui/SupportSection";
 
 import Navbar from "@/components/navbar";
+import ChatInterface from "./chat/page";
 
 
 export default function Home() {
@@ -61,7 +62,7 @@ export default function Home() {
         </>
       ) : (
         <div className="grow flex flex-col">
-          <chat-interface/>
+          <ChatInterface/>
         </div>
       )}
     </main>

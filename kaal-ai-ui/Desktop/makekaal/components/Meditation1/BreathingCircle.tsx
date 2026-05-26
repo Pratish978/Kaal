@@ -3,6 +3,8 @@
 import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import Navbar from "@/components/navbar";
+import ChatInterface from "@/app/chat/page";
 
 // JSON Imports
 import chapter2 from '@/app/JSON/Chapter2.json';
