@@ -1,11 +1,12 @@
 "use client";
 
 import React, { useEffect, useState } from 'react';
-
 import { Calendar, Clock, MapPin, Loader2 } from 'lucide-react';
 import Navbar from "@/components/navbar";
+import { useRouter } from 'next/navigation';
 
 interface Event {
+    id?: string | number;
     title?: string;
     type?: string;
     price?: string | number;
@@ -15,6 +16,7 @@ interface Event {
 }
 
 const EventsPage = () => {
+    const router = useRouter();
     const [events, setEvents] = useState<Event[]>([]);
     const [loading, setLoading] = useState<boolean>(true);
     const [error, setError] = useState<string | null>(null);
@@ -23,12 +25,10 @@ const EventsPage = () => {
         const fetchEvents = async () => {
             try {
                 const api_url = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-                // IMPORTANT: Agar backend dependencies check kar raha hai, toh headers bhejna zaruri hai
                 const response = await fetch(`${api_url}/events`, {
                     method: 'GET',
                     headers: {
                         'Content-Type': 'application/json',
-                        // "x-api-key" wahi naam hona chahiye jo get_api_key function check kar raha hai
                         'x-api-key': process.env.NEXT_PUBLIC_API_KEY || "YOUR_STATIC_KEY_HERE"
                     }
                 });
@@ -50,6 +50,22 @@ const EventsPage = () => {
 
         fetchEvents();
     }, []);
+
+    const handleRegisterRedirect = (event: Event, index: number) => {
+        // Safe fallback if identifier field doesn't exist on objects
+        const targetId = event.id || index;
+        
+        // Construct structured parameters to share metadata seamlessly with form states
+        const queryParams = new URLSearchParams({
+            title: event.title || "Experience",
+            price: String(event.price || 0),
+            date: event.date || "Everyday",
+            time: event.time || "08:30 PM",
+            location: event.location || "Zoom"
+        }).toString();
+
+        router.push(`/events/${targetId}/register?${queryParams}`);
+    };
 
     return (
         <div className="min-h-screen bg-[#FDF8F1]">
@@ -80,8 +96,8 @@ const EventsPage = () => {
                                     <div className="flex justify-between items-start mb-6">
                                         <h3 className="text-2xl font-bold text-[#2D3436]">{event.title || "Experience"}</h3>
                                         <div className="flex flex-col gap-2 shrink-0">
-                                            <span className="bg-[#EBF2FF] text-[#4A86F7] text-xs px-3 py-1 rounded-full border border-[#D0E0FF]">Online</span>
-                                            <span className="bg-[#FFF8EC] text-[#E6BC6B] text-xs px-3 py-1 rounded-full border border-[#FFEBC2]">₹{event.price || 0}</span>
+                                            <span className="bg-[#EBF2FF] text-[#4A86F7] text-xs px-3 py-1 rounded-full border border-[#D0E0FF] text-center">Online</span>
+                                            <span className="bg-[#FFF8EC] text-[#E6BC6B] text-xs px-3 py-1 rounded-full border border-[#FFEBC2] text-center">₹{event.price || 0}</span>
                                         </div>
                                     </div>
                                     <div className="space-y-4 mb-8 text-gray-500">
@@ -90,7 +106,12 @@ const EventsPage = () => {
                                         <div className="flex items-center gap-3"><MapPin size={18}/><span>{event.location || "Zoom"}</span></div>
                                     </div>
                                 </div>
-                                <button className="w-full bg-[#E6BC6B] text-white py-4 rounded-2xl font-bold cursor-pointer">Register now</button>
+                                <button 
+                                    onClick={() => handleRegisterRedirect(event, index)}
+                                    className="w-full bg-[#E6BC6B] hover:bg-[#d4ac5b] text-white py-4 rounded-2xl font-bold cursor-pointer transition-colors text-center"
+                                >
+                                    Register now
+                                </button>
                             </div>
                         ))}
                     </div>

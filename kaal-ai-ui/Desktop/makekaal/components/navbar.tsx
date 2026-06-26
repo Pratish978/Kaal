@@ -5,6 +5,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { ChevronLeft, X, Menu, LogOut, Clock } from "lucide-react";
 import { supabase } from "@/app/utils/supabase"; 
 import AuthModal from "./auth/AuthModal";
+import ChatInterface from "./ChatInterface";
 
 
 
